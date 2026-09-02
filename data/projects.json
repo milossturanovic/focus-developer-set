@@ -1,0 +1,63 @@
+{
+  "_comment": "EDIT THIS FILE TO MANAGE YOUR PORTFOLIO. See lib/projects-data.ts for the full schema.",
+  "_workflow": "1) Edit a project. 2) `npm run dev` to preview. 3) `git commit -am '...' && git push` to deploy.",
+  "_required_fields": ["id", "slug", "title", "description", "category", "tech", "completed"],
+  "_optional_fields": [
+    "status",
+    "featured",
+    "tags",
+    "client",
+    "duration",
+    "coverImage",
+    "screenshots",
+    "highlights",
+    "impact",
+    "websiteUrl",
+    "githubUrl"
+  ],
+  "_enums": {
+    "status": ["draft", "published"]
+  },
+  "projects": [
+    {
+      "id": "1",
+      "slug": "sample-landing-page",
+      "status": "published",
+      "featured": true,
+      "title": "Sample landing page",
+      "description": "Placeholder project — replace with a real build. A simple marketing page used to demonstrate the JSON workflow.",
+      "category": "web",
+      "tech": ["nextjs", "react"],
+      "tags": ["Next.js", "Tailwind"],
+      "completed": "2025",
+      "client": "Personal",
+      "duration": "1 week",
+      "websiteUrl": "https://example.com",
+      "githubUrl": "https://github.com/example/sample-landing-page",
+      "highlights": [
+        "Responsive layout",
+        "Accessible headings and focus states",
+        "Content driven from JSON"
+      ]
+    },
+    {
+      "id": "2",
+      "slug": "sample-dashboard-ui",
+      "status": "published",
+      "featured": false,
+      "title": "Sample dashboard UI",
+      "description": "Placeholder project — replace with a real build. A small dashboard interface used as a second list item.",
+      "category": "app",
+      "tech": ["react"],
+      "tags": ["React", "TypeScript"],
+      "completed": "2025",
+      "client": "Personal",
+      "duration": "2 weeks",
+      "highlights": [
+        "Component layout",
+        "Filterable list",
+        "Empty and loading states"
+      ]
+    }
+  ]
+}
