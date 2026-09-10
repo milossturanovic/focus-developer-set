@@ -38,8 +38,21 @@ export type JsonProject = {
   tech: string[]
   /** Display tags shown on cards (defaults to `tech`). */
   tags?: string[]
+  /** Short pill on the case-study page. Defaults to `category`. */
+  label?: string
+  /** Role shown in case-study meta, e.g. "Frontend". */
+  role?: string
+  /** One-sentence hero summary. Defaults to `description`. */
+  summary?: string
+  /** Long-form body on /projects/[slug]. */
+  caseStudy?: {
+    intro?: string
+    sections?: { title: string; body: string }[]
+  }
   /** Short completion label, e.g. "Oct 2024". */
   completed: string
+  /** Longer date on the case-study page, e.g. "March 2025". Defaults to `completed`. */
+  completionDate?: string
   client?: string
   duration?: string
   /** Path under /public, full URL, or data URI. Defaults to a generated SVG. */
@@ -91,6 +104,7 @@ export type FeaturedProjectCard = {
   id: string
   slug: string
   title: string
+  category: string
   completed: string
   tags: string[]
   image: string
@@ -228,8 +242,109 @@ export async function getListProjects(): Promise<ListProjectCard[]> {
   }))
 }
 
+// ---------------------------------------------------------------------------
+// CASE STUDY PAGE (/projects/[slug])
+// ---------------------------------------------------------------------------
+
+/** Small thumbnail used by the "Related projects" sidebar. */
+export type RelatedProjectCard = {
+  slug: string
+  title: string
+  year: string
+  image: string
+}
+
+/** Everything the /projects/[slug] case-study layout renders. */
+export type CaseStudyPageData = {
+  slug: string
+  title: string
+  /** Category pill + sidebar "Category" value. */
+  label: string
+  summary: string
+  heroImage: string
+  meta: { label: string; value: string }[]
+  intro: string
+  sections: { title: string; body: string }[]
+  highlights: string[]
+  technologies: string[]
+  websiteUrl?: string
+  githubUrl?: string
+  related: RelatedProjectCard[]
+  next?: { slug: string; title: string }
+}
+
+function toRelatedCard(p: JsonProject): RelatedProjectCard {
+  return {
+    slug: p.slug,
+    title: p.title,
+    year: p.completed,
+    image: p.coverImage?.trim() || makeScreenshot(p.title),
+  }
+}
+
+/**
+ * Builds the case-study payload for one slug, plus siblings for the related
+ * sidebar and the next-project footer link.
+ */
+export async function getProjectCaseStudy(
+  slug: string,
+  relatedLimit = 3
+): Promise<CaseStudyPageData | undefined> {
+  const published = await getPublishedJsonProjects()
+  const index = published.findIndex((p) => p.slug === slug)
+  if (index === -1) return undefined
+
+  const p = published[index]
+  const label = p.label?.trim() || p.category
+  const role = p.role?.trim() || "Front end"
+  const others = published.filter((other) => other.slug !== slug)
+  const nextProject = published[(index + 1) % published.length]
+
+  const meta = [
+    { label: "Client", value: p.client?.trim() || "Personal project" },
+    { label: "Date", value: p.completionDate?.trim() || p.completed },
+    { label: "Role", value: role },
+    { label: "Category", value: label },
+  ]
+  if (p.duration?.trim()) {
+    meta.push({ label: "Timeline", value: p.duration.trim() })
+  }
+
+  const writtenSections =
+    p.caseStudy?.sections?.filter(
+      (s) => s.title.trim().length > 0 && s.body.trim().length > 0
+    ) ?? []
+  const impactSections =
+    p.impact
+      ?.filter((item) => item.title.trim() && item.description.trim())
+      .map((item) => ({ title: item.title, body: item.description })) ?? []
+
+  return {
+    slug: p.slug,
+    title: p.title,
+    label,
+    summary: p.summary?.trim() || p.description,
+    heroImage:
+      p.screenshots?.homepage?.trim() ||
+      p.coverImage?.trim() ||
+      makeScreenshot(`${p.title} — preview`),
+    meta,
+    intro: p.caseStudy?.intro?.trim() || p.description,
+    sections: writtenSections.length > 0 ? writtenSections : impactSections,
+    highlights: p.highlights?.filter((item) => item.trim().length > 0) ?? [],
+    technologies: p.tags?.length ? p.tags : p.tech,
+    websiteUrl: p.websiteUrl?.trim() || undefined,
+    githubUrl: p.githubUrl?.trim() || undefined,
+    related: others.slice(0, relatedLimit).map(toRelatedCard),
+    next:
+      nextProject && nextProject.slug !== slug
+        ? { slug: nextProject.slug, title: nextProject.title }
+        : undefined,
+  }
+}
+
 export async function getFeaturedProjects(
-  limit = 3
+  limit = 5
 ): Promise<FeaturedProjectCard[]> {
   const published = await getPublishedJsonProjects()
   const featured = published.filter((p) => p.featured)
@@ -238,6 +353,7 @@ export async function getFeaturedProjects(
     id: p.id,
     slug: p.slug,
     title: p.title,
+    category: p.category,
     completed: p.completed,
     tags: p.tags?.length ? p.tags : p.tech,
     image: p.coverImage?.trim() || makeScreenshot(p.title),

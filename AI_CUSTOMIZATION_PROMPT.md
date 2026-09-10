@@ -5,9 +5,7 @@ Copy the prompt below into ChatGPT, Claude, or Cursor after you unzip the templa
 ---
 
 ```text
-I purchased the Focus Developer Set (Next.js 14 portfolio shell). Help me customize it for my job search.
-
-This is a scaffold: routes and content workflow exist, but home / projects / contact are placeholder layouts. Do not clone another Portfolio Sets product’s sections unless I request a specific design.
+I purchased the Focus Developer Set (Next.js 14 portfolio template). Help me customize it for my job search. The home hero, about section, services section, toolkit grid, experience chart, selected projects slider, reach CTA, projects grid, project case-study page, and contact page are already designed — do not rebuild them unless I ask.
 
 Do not add a database, admin panel, or backend unless I ask.
 
@@ -22,25 +20,27 @@ My details:
 - Target roles: [e.g. junior frontend, freelance web dev]
 
 What is already built:
-- Home (/) — navbar + hero stub + section placeholder
-- Projects (/projects) — list wired to data/projects.json
-- Project detail (/projects/[slug]) — SSG detail stub
-- Contact (/contact) — info from config + UI-only form
+- Home (/) — editorial typography hero + about strip + services cards + toolkit grid + experience chart + selected projects slider + reach CTA
+- Projects (/projects) — poster grid wired to data/projects.json
+- Project detail (/projects/[slug]) — editorial case study (hero, cover, sidebar, share, next)
+- Contact (/contact) — split editorial layout + UI-only form
 - Navbar and footer (global layout)
 
 Project workflow rules (important):
 - All project content lives in data/projects.json — edit that file only for projects.
-- Site branding, nav, and social links live in config/site.ts.
+- Site branding, nav, social links, hero copy, about copy, services copy, toolkit copy, experience roles, selected-projects heading, projects-page heading, case-study labels, reach CTA, and contact-page copy live in config/site.ts.
 - Page title and meta description in app/layout.tsx read from config/site.ts automatically.
-- Contact form is UI-only in components/contact-form.tsx (wire sendInquiry when I ask).
-- Footer and navbar social links read from config/site.ts — do not duplicate URLs elsewhere.
+- Home page (app/page.tsx) already composes designed sections — edit copy in config/site.ts → hero, about, services, toolkit, experience, selectedProjects, and reach, not the page layout.
+- Projects page (app/projects/page.tsx) already uses the same poster cards as the homepage slider — edit heading copy in config/site.ts → projectsPage.
+- Project detail (app/projects/[slug]/page.tsx) already uses the case-study layout — edit labels in config/site.ts → caseStudyPage and long-form copy in data/projects.json.
+- Contact page (app/contact/page.tsx) already uses the split layout — edit copy in config/site.ts → contactPage. The form is UI-only in components/contact-form.tsx (wire sendInquiry when I ask).
+- Footer name and Home / Projects links read from config/site.ts. Navbar social links also read from config/site.ts — do not duplicate URLs elsewhere.
 - Missing coverImage values get SVG placeholders from lib/projects-data.ts.
 
 Tasks (do in order):
-1. Update config/site.ts with my real branding and links (name, role, description, url, contact, links, navItems).
-2. Replace the 2 placeholder projects in data/projects.json with [N] real or realistic portfolio projects. Keep valid slugs and required fields (id, slug, title, description, category, tech, completed). Fill optional fields where useful: featured, tags, client, duration, coverImage, websiteUrl, githubUrl, highlights.
-3. Only if I ask: design unique sections under components/sections/ and compose them in app/page.tsx. Keep the light-minimal tokens in app/globals.css unless I specify a theme.
-4. List every file you changed and give me a short test checklist (npm run dev, npm run build, click /, /projects, a project slug, /contact).
+1. Update config/site.ts with my real branding and links (name, role, description, url, contact, links, navItems, hero, about, services, toolkit, experience, selectedProjects, projectsPage, caseStudyPage, reach, contactPage).
+2. Replace the sample projects in data/projects.json with [N] real or realistic portfolio projects. Keep valid slugs and required fields (id, slug, title, description, category, tech, completed). Fill optional fields where useful: featured, tags, label, role, summary, caseStudy, completionDate, client, duration, coverImage, websiteUrl, githubUrl, highlights. Mark homepage slider cards with `"featured": true`.
+3. List every file you changed and give me a short test checklist (npm run dev, npm run build, click /, /projects, a project slug, /contact).
 
 Constraints:
 - Keep TypeScript types valid.

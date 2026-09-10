@@ -13,12 +13,13 @@ Built with Next.js 14 (App Router), React 18, TypeScript, Tailwind CSS, and shad
 ## What's inside
 
 - **Routes**: Home (`/`), `/projects`, `/projects/[slug]`, `/contact`
+- **Home**: Editorial hero + about + services + toolkit + experience + selected projects + reach CTA
 - **Global chrome**: Navbar + footer from `config/site.ts`
 - **Content workflow**: Branding in `config/site.ts`, projects in `data/projects.json`
 - **Contact form**: UI-only until you wire a provider
 - **No backend, no database, no env vars required**
 
-This is a **scaffold**, not a finished visual design. Home, projects, and contact are clearly marked as placeholders.
+This template includes a designed home (hero, about, services, toolkit, experience chart, selected projects slider, reach CTA), a projects archive, a case-study detail page, and a split contact page.
 
 ---
 
@@ -66,6 +67,16 @@ Full schema: top of `lib/projects-data.ts`.
 | ----------------------- | ---- |
 | Site name, role, email, social | `config/site.ts` |
 | Page title & meta description | `config/site.ts` (via layout) |
+| Hero headline, bio, CTA, stats | `config/site.ts` → `hero` |
+| About heading, paragraphs, photo | `config/site.ts` → `about` |
+| How I Contribute heading, cards | `config/site.ts` → `services` |
+| Toolkit heading, groups, tools | `config/site.ts` → `toolkit` |
+| Experience heading, years, roles | `config/site.ts` → `experience` |
+| Selected projects heading / intro | `config/site.ts` → `selectedProjects` |
+| Projects page heading / intro | `config/site.ts` → `projectsPage` |
+| Case study labels | `config/site.ts` → `caseStudyPage` |
+| Contact page heading, panel, form copy | `config/site.ts` → `contactPage` |
+| Reach heading, channels, CTAs | `config/site.ts` → `reach` |
 | Nav links | `config/site.ts` → `navItems` |
 | Projects (every page) | `data/projects.json` |
 | Contact form wiring | `components/contact-form.tsx` |
@@ -83,7 +94,7 @@ focus-developer-set/
 ├── app/
 │   ├── globals.css
 │   ├── layout.tsx
-│   ├── page.tsx                 # home shell
+│   ├── page.tsx                 # home sections + featured projects
 │   ├── contact/page.tsx
 │   └── projects/
 │       ├── page.tsx             # list shell
@@ -92,12 +103,22 @@ focus-developer-set/
 │   ├── site-navbar.tsx
 │   ├── site-footer.tsx
 │   ├── contact-form.tsx
-│   ├── sections/                # add designed sections here
-│   └── ui/                      # shadcn primitives
+│   ├── project-poster-card.tsx
+│   ├── project-case-study.tsx
+│   ├── animated-burger-icon.tsx
+│   ├── sections/
+│   │   ├── hero-section.tsx
+│   │   ├── about-section.tsx
+│   │   ├── services-section.tsx
+│   │   ├── toolkit-section.tsx
+│   │   ├── experience-section.tsx
+│   │   ├── selected-projects-section.tsx
+│   │   └── reach-section.tsx
+│   └── ui/                      # shadcn primitives + sidemenu
 ├── config/site.ts
 ├── data/projects.json
 ├── lib/projects-data.ts
-└── public/                      # buyer assets
+└── public/                      # buyer assets (about photo, project covers)
 ```
 
 ---

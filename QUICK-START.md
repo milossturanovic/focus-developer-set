@@ -39,6 +39,7 @@ No environment variables are required for the default template.
 - [ ] Update `description` and `url` (use your real domain)
 - [ ] Set `contact.location` and `contact.email`
 - [ ] Replace social URLs in `links` (GitHub, LinkedIn, X, email)
+- [ ] Skim `hero`, `about`, `services`, `toolkit`, `experience`, `selectedProjects`, `projectsPage`, `caseStudyPage`, `reach`, and `contactPage` and adjust copy
 
 Page title and meta description update via `app/layout.tsx`.
 
@@ -46,9 +47,11 @@ Page title and meta description update via `app/layout.tsx`.
 
 **File:** `data/projects.json`
 
-- [ ] Replace the 2 placeholder projects with your own
+- [ ] Replace the sample projects with your own
+- [ ] Set `"featured": true` on projects that should appear in the home slider
 - [ ] Set `"status": "draft"` to temporarily hide a project
 - [ ] Keep required fields: `id`, `slug`, `title`, `description`, `category`, `tech`, `completed`
+- [ ] Fill `summary` and `caseStudy` (`intro` + `sections`) for each detail page
 
 ### 3. Contact (2 min)
 

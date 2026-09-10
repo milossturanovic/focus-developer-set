@@ -4,80 +4,52 @@
  * ============================================================================
  *
  * WHAT THIS IS:
- *   Minimal footer rendered from the root layout on every page.
- *   Name, email, and social URLs come from config/site.ts only.
+ *   Single-row footer on every page: name, credit line, Home / Projects.
+ *   Name and routes come from config/site.ts.
  *
  * DEVELOPER EDIT NOTES:
- *   1. Edit name, contact.email, and links in config/site.ts.
- *   2. Do not hardcode social URLs here.
+ *   1. Edit the display name in config/site.ts → name.
+ *   2. Home and Projects hrefs come from navItems.
  *
  * ============================================================================
  */
 
 import Link from "next/link"
-import { Github, Linkedin } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 
-function XIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-      className={className}
-    >
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.739L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
-    </svg>
-  )
-}
-
-const SOCIAL_LINKS = [
-  { name: "GitHub", href: siteConfig.links.github, icon: Github },
-  { name: "LinkedIn", href: siteConfig.links.linkedin, icon: Linkedin },
-  { name: "X", href: siteConfig.links.twitter, icon: XIcon },
-]
-
 export function SiteFooter() {
   const year = new Date().getFullYear()
-  const { name, contact, links } = siteConfig
+  const { name, navItems } = siteConfig
+  const links = navItems.filter(
+    (item) => item.href === "/" || item.href === "/projects"
+  )
 
   return (
-    <footer className="border-t border-border">
-      <div className="mx-auto flex max-w-3xl flex-col gap-6 px-6 py-10 sm:px-8 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p className="text-sm font-semibold">{name}</p>
-          <a
-            href={links.email}
-            className="mt-1 inline-block text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-          >
-            {contact.email}
-          </a>
-        </div>
+    <footer className="border-t border-border bg-background">
+      <div className="mx-auto grid max-w-6xl items-center gap-3 px-6 py-6 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:gap-8 sm:px-8 sm:py-7">
+        <p className="text-sm font-medium tracking-tight text-foreground">
+          {name}
+        </p>
 
-        <ul className="flex items-center gap-2">
-          {SOCIAL_LINKS.map((social) => {
-            const Icon = social.icon
-            return (
-              <li key={social.name}>
+        <p className="text-sm text-muted-foreground sm:whitespace-nowrap sm:text-center">
+          © {year} {name}. Built with Next.js and Tailwind CSS.
+        </p>
+
+        <nav aria-label="Footer">
+          <ul className="flex items-center gap-4 sm:justify-end">
+            {links.map((item) => (
+              <li key={item.href}>
                 <Link
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.name}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  href={item.href}
+                  className="text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                 >
-                  <Icon className="h-4 w-4" />
+                  {item.title}
                 </Link>
               </li>
-            )
-          })}
-        </ul>
-      </div>
-      <div className="mx-auto max-w-3xl border-t border-border px-6 py-4 sm:px-8">
-        <p className="text-xs text-muted-foreground">
-          © {year} {name}. All rights reserved.
-        </p>
+            ))}
+          </ul>
+        </nav>
       </div>
     </footer>
   )
