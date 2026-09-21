@@ -118,32 +118,32 @@
     },
     {
       "id": "3",
-      "slug": "project-management-dashboard",
+      "slug": "store-operations-dashboard",
       "status": "published",
       "featured": true,
-      "title": "Project Management Dashboard",
-      "label": "Internal Tool",
+      "title": "Store Operations Dashboard",
+      "label": "Internal Dashboard",
       "role": "Frontend",
-      "description": "A Next.js board-and-list view for tasks — shared filters, owners, dates, and first-class loading and empty states.",
-      "summary": "A Next.js board-and-list view for tasks — status, owners, and dates, with empty and loading states.",
+      "description": "A React dashboard for a store owner — revenue, orders, inventory, and traffic — fed by JSON shaped like a REST payload.",
+      "summary": "A React dashboard for a store owner — revenue, orders, inventory, and traffic — with charts, tables, and API-shaped JSON.",
       "caseStudy": {
-        "intro": "Practice for internal tools: one filter bar, a kanban, and a list that share the same query. Tasks are typed JSON. Switching views never drops the current filter.",
+        "intro": "Practice for an internal merchant tool: one home screen with metrics, a sales chart, recent orders, and stock status. Numbers come from JSON shaped like a dashboard endpoint so the layout would transfer to a real API.",
         "sections": [
           {
             "title": "The challenge",
-            "body": "Most board demos skip empty states and treat the card and the row as two different objects. I needed one task model and two views that stay in sync."
+            "body": "A store owner needs the day’s numbers in one place — revenue, orders, and what is out of stock — without hopping between reports. Tutorial dashboards often skip empty rows and treat every widget as a static mock."
           },
           {
             "title": "The approach",
-            "body": "One filter, two layouts. Loading and empty are real screens. Color is only for status. TypeScript types the task so the card and the row cannot drift apart."
+            "body": "TypeScript types the metric, order, and inventory records. The chart and the orders table read the same JSON. Status chips on orders and stock stay labels, not decoration. Loading and empty states are real screens if the payload is slow or missing."
           },
           {
             "title": "The outcome",
-            "body": "A small internal-tool demo on Vercel. I use it to talk about state, lists, and API-shaped records — not about running a product team."
+            "body": "A small internal-dashboard demo on Vercel. I use it to talk about dense product UI, tables, and API-shaped records — not about running a shop."
           }
         ]
       },
-      "category": "Internal Tool",
+      "category": "Internal Dashboard",
       "tech": ["nextjs", "react", "typescript"],
       "tags": ["Next.js", "TypeScript", "Tailwind"],
       "completed": "2024",
@@ -155,58 +155,15 @@
         "homepage": "/projects/project-management-hero.jpg"
       },
       "websiteUrl": "https://example.com",
-      "githubUrl": "https://github.com/example/project-management-dashboard",
+      "githubUrl": "https://github.com/example/store-operations-dashboard",
       "highlights": [
-        "Kanban and list views over one query",
-        "Filter by owner and status",
-        "Empty and loading states"
+        "Revenue and order metrics from JSON",
+        "Sales chart and recent-orders table",
+        "Inventory status on the same home screen"
       ]
     },
     {
       "id": "4",
-      "slug": "travel-booking-experience",
-      "status": "published",
-      "featured": true,
-      "title": "Travel Booking Interface",
-      "label": "React Forms",
-      "role": "Frontend",
-      "description": "A multi-step React booking flow — search, dates, occupancy, and checkout — with validation and mobile-first layout.",
-      "summary": "A multi-step React booking flow — search, dates, occupancy, and checkout — built to practice forms and validation.",
-      "caseStudy": {
-        "intro": "A personal build for React forms: a short stepper, shared date and occupancy controls, and a checkout that works on a phone. It is not a live marketplace.",
-        "sections": [
-          {
-            "title": "The challenge",
-            "body": "Giant single-page forms hide the error. I wanted a path a first-time user could finish, with validation that names the actual problem."
-          },
-          {
-            "title": "The approach",
-            "body": "Each step has one job. Progress sits at the top. Dates and occupancy share one component language. Invalid submit shows field-level messages, not a generic alert."
-          },
-          {
-            "title": "The outcome",
-            "body": "Deployed on Vercel. I use it in interviews to talk about state, forms, and mobile-first layout."
-          }
-        ]
-      },
-      "category": "React Forms",
-      "tech": ["react", "typescript"],
-      "tags": ["React", "TypeScript", "Tailwind"],
-      "completed": "2025",
-      "completionDate": "January 2025",
-      "client": "Personal project",
-      "duration": "5 weeks",
-      "coverImage": "/projects/travel-booking.jpg",
-      "websiteUrl": "https://example.com",
-      "githubUrl": "https://github.com/example/travel-booking-experience",
-      "highlights": [
-        "Multi-step booking with clear progress",
-        "Field-level validation",
-        "Mobile-first checkout"
-      ]
-    },
-    {
-      "id": "5",
       "slug": "modern-ecommerce-platform",
       "status": "published",
       "featured": true,
@@ -239,7 +196,10 @@
       "completionDate": "May 2024",
       "client": "Personal project",
       "duration": "8 weeks",
-      "coverImage": "/projects/ecommerce-platform.jpg",
+      "coverImage": "/projects/e-commerce-square.jpg",
+      "screenshots": {
+        "homepage": "/projects/e-commerce-fullwidth.jpg"
+      },
       "websiteUrl": "https://example.com",
       "githubUrl": "https://github.com/example/modern-ecommerce-platform",
       "highlights": [

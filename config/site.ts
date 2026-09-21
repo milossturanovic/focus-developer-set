@@ -11,7 +11,7 @@
  *   1. Update name, shortName, role, description, and url to match your profile.
  *   2. Set contact.location and contact.email.
  *   3. Replace links.github, links.linkedin, links.twitter, and links.email.
- *   4. Edit hero.kicker, hero.headline, hero.bio, hero.cta, and hero.stats.
+ *   4. Edit hero.kicker, hero.headline, hero.bio, hero.cta, hero.secondaryCta, and hero.stats.
  *   5. Edit about.title, about.paragraphs, and about.image.
  *   6. Edit services.title, services.intro, and services.items.
  *   7. Edit toolkit.title, toolkit.intro, and toolkit.groups (tools + marks).
@@ -77,9 +77,15 @@ export const siteConfig = {
       label: "View projects",
       href: "/projects",
     },
+    secondaryCta: {
+      label: "Download resume",
+      /** Put your PDF at public/resume.pdf (or change this path). */
+      href: "/resume.pdf",
+      download: true,
+    },
     stats: [
       { label: "Frontend practice", value: "1+ Year" },
-      { label: "Built & deployed", value: "6+ Projects" },
+      { label: "Built & deployed", value: "4+ Projects" },
       { label: "Main stack", value: "React" },
     ],
   },
@@ -286,7 +292,7 @@ export const siteConfig = {
   selectedProjects: {
     title: "Selected projects",
     intro:
-      "React practice I shipped — dashboards, trackers, booking flows, and API-shaped data, each with a case study and a repo.",
+      "React practice I shipped — dashboards, trackers, storefronts, and API-shaped data, each with a case study and a repo.",
   },
 
   // ---------------------------------------------------------------------------

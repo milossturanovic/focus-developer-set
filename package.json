@@ -2,7 +2,7 @@
   "name": "focus-developer-set",
   "version": "1.0.0",
   "private": true,
-  "description": "Focus Developer Set — a Next.js portfolio shell. Edit config/site.ts and data/projects.json, push to git, deploy.",
+  "description": "Focus Developer Set — a Next.js portfolio template. Edit config/site.ts and data/projects.json, push to git, deploy.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

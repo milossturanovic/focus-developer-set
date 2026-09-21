@@ -15,6 +15,7 @@ No environment variables are required for the default template.
 ## Setup (5 minutes)
 
 - [ ] **Extract the bundle** to your desired location
+- [ ] **Open `start-here.html`** in a browser (full kit tour)
 - [ ] **Open a terminal** in the project folder
 - [ ] **Install dependencies:**
   ```bash
@@ -63,9 +64,10 @@ Page title and meta description update via `app/layout.tsx`.
 ## Optional polish
 
 - [ ] Add images under `public/` and set `coverImage` in JSON
-- [ ] Tweak theme colors in `app/globals.css` (light minimal placeholder)
+- [ ] Replace `public/resume.pdf` with your CV
+- [ ] Tweak theme colors in `app/globals.css` if you want a different palette
 - [ ] Change the font in `app/layout.tsx`
-- [ ] Copy the prompt from `AI_CUSTOMIZATION_PROMPT.md` into your AI tool when you are ready to design sections
+- [ ] Copy the prompt from `AI_CUSTOMIZATION_PROMPT.md` into your AI tool to swap in your details
 
 ---
 
@@ -105,8 +107,8 @@ See `DEPLOYMENT.md` for other hosts.
 
 1. **Use Git from day one.** Editing config/JSON + pushing is the publishing workflow.
 2. **Edit `config/site.ts` first.** Name, role, email, and socials flow to navbar, footer, and contact.
-3. **Content first, design second.** This bundle ships as a working shell. Design unique sections when you are ready.
-4. **Don’t over-customize on day one.** Ship content, iterate on visuals later.
+3. **Change copy before layout.** Pages are already designed — start with `config/site.ts` and `data/projects.json`.
+4. **Don’t over-customize on day one.** Ship your details, then tweak visuals.
 
 ---
 

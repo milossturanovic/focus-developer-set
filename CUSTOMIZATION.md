@@ -1,6 +1,6 @@
 # Customization Guide
 
-How to personalize the Focus Developer Set portfolio shell.
+How to personalize the Focus Developer Set portfolio template.
 
 ## Table of contents
 
@@ -28,7 +28,7 @@ Central config for brand, nav, contact, and social links.
 export const siteConfig = {
   name: "John Doe",
   shortName: "John",
-  role: "Junior Frontend Developer",
+  role: "Frontend Developer",
   description: "Your custom description",
   url: "https://johndoe.dev",
   contact: {
@@ -57,7 +57,8 @@ Also edit `hero` in the same file:
 | ----- | ------- |
 | `headline` | Array of H1 lines |
 | `bio` | Supporting paragraph under the heading |
-| `cta` | `{ label, href }` for the dark button |
+| `cta` | `{ label, href }` for the filled button |
+| `secondaryCta` | `{ label, href, download }` for **Download resume** — PDF at `public/resume.pdf` |
 | `stats` | Three `{ label, value }` items in the bottom strip |
 
 Component: `components/sections/hero-section.tsx`.
@@ -186,13 +187,13 @@ If this file is missing or invalid JSON, **`npm run build` fails** so you catch 
 | `websiteUrl`   | Live site button                             |
 | `githubUrl`    | Source button                                |
 | `highlights`   | Fallback list if `caseStudy.sections` is empty |
-| `coverImage`   | Path under `/public` or a full URL           |
-| `screenshots`  | `{ homepage, secondary }` image overrides    |
+| `coverImage`   | Card / slider image under `/public` or a full URL |
+| `screenshots`  | `{ homepage }` is the case-study hero (falls back to `coverImage`) |
 
 ### Enums
 
 - `status`: `"draft"` or `"published"`
-- `category` and `tech` are free-form strings / string arrays in this shell
+- `category` and `tech` are free-form strings / string arrays
 
 Workflow: edit JSON → `npm run dev` → commit → push → host redeploys.
 
@@ -232,10 +233,10 @@ Do not add a database, Prisma, or admin dashboard for the default product.
 ## Navigation & footer
 
 - **Navbar:** `components/site-navbar.tsx` — desktop inline links; mobile sidemenu trigger. Brand, nav items, and drawer socials come from `config/site.ts`.
-- **Sidemenu:** `components/ui/sidemenu.tsx` — slide-over panel (same 450ms motion as Dark React). Trigger uses `components/animated-burger-icon.tsx`.
+- **Sidemenu:** `components/ui/sidemenu.tsx` — slide-over panel. Trigger uses `components/animated-burger-icon.tsx`.
 - **Footer:** `components/site-footer.tsx` — name, credit line, and Home / Projects from `config/site.ts`
 
-Edit config first; only change these components when designing a new layout.
+Edit config first; only change these components if you need a different layout.
 
 ---
 
@@ -244,6 +245,7 @@ Edit config first; only change these components when designing a new layout.
 | Asset | Path |
 | ----- | ---- |
 | About photo | `public/about/studio-desk.jpg` via `about.image` |
+| Resume PDF | `public/resume.pdf` via `hero.secondaryCta.href` |
 | Project covers | `public/` via each project’s `coverImage` |
 | Other assets | `public/` |
 
@@ -255,7 +257,7 @@ If `coverImage` is omitted, an SVG placeholder is generated. Commit everything u
 
 **File:** `app/globals.css`
 
-The default theme is a **light minimal placeholder**. Tokens live on `:root` as CSS variables (`--background`, `--foreground`, `--primary`, …). Tailwind maps them via `tailwind.config.ts`.
+The default theme is **light and editorial** (white, near-black type). Tokens live on `:root` as CSS variables (`--background`, `--foreground`, `--primary`, …). Tailwind maps them via `tailwind.config.ts`.
 
 Prefer theme classes (`bg-background`, `text-muted-foreground`) over hardcoded hex in components.
 

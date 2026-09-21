@@ -1,12 +1,12 @@
 /**
  * ============================================================================
- * GLOBAL STYLES — light minimal baseline (placeholder theme)
+ * GLOBAL STYLES — light editorial theme
  * ============================================================================
  *
  * WHAT THIS IS:
- *   Tailwind layers + CSS variables for the Focus Developer Set shell.
- *   Default theme is a light / minimal placeholder. Replace tokens in the
- *   design phase.
+ *   Tailwind layers + CSS variables for the Focus Developer Set.
+ *   Default theme is white, editorial, and monochrome. Edit tokens below
+ *   if you want different colors.
  *
  * DEVELOPER EDIT NOTES:
  *   1. Change colors by editing the :root CSS variables below.

@@ -38,8 +38,8 @@ Project workflow rules (important):
 - Missing coverImage values get SVG placeholders from lib/projects-data.ts.
 
 Tasks (do in order):
-1. Update config/site.ts with my real branding and links (name, role, description, url, contact, links, navItems, hero, about, services, toolkit, experience, selectedProjects, projectsPage, caseStudyPage, reach, contactPage).
-2. Replace the sample projects in data/projects.json with [N] real or realistic portfolio projects. Keep valid slugs and required fields (id, slug, title, description, category, tech, completed). Fill optional fields where useful: featured, tags, label, role, summary, caseStudy, completionDate, client, duration, coverImage, websiteUrl, githubUrl, highlights. Mark homepage slider cards with `"featured": true`.
+1. Update config/site.ts with my real branding and links (name, role, description, url, contact, links, navItems, hero, about, services, toolkit, experience, selectedProjects, projectsPage, caseStudyPage, reach, contactPage). Replace public/resume.pdf with my CV (hero.secondaryCta.href).
+2. Replace the sample projects in data/projects.json with [N] real or realistic portfolio projects. Keep valid slugs and required fields (id, slug, title, description, category, tech, completed). Fill optional fields where useful: featured, tags, label, role, summary, caseStudy, completionDate, client, duration, coverImage, screenshots.homepage, websiteUrl, githubUrl, highlights. Mark homepage slider cards with `"featured": true`. Card image = coverImage; case-study hero = screenshots.homepage.
 3. List every file you changed and give me a short test checklist (npm run dev, npm run build, click /, /projects, a project slug, /contact).
 
 Constraints:

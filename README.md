@@ -1,8 +1,8 @@
 # Focus Developer Set
 
-A Next.js 14 portfolio **shell** for developers. Routes, config, and a JSON content workflow are in place — pages are labeled stubs so you (or an AI) can design the UI next.
+A light, editorial developer portfolio template built with Next.js 14, TypeScript, Tailwind CSS, and shadcn/ui. Designed pages are included — edit content in config and JSON, then deploy.
 
-Built with Next.js 14 (App Router), React 18, TypeScript, Tailwind CSS, and shadcn/ui.
+**New here?** Open [`start-here.html`](./start-here.html) in your browser first — a short tour of the set and the 5 publish steps.
 
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
@@ -12,14 +12,15 @@ Built with Next.js 14 (App Router), React 18, TypeScript, Tailwind CSS, and shad
 
 ## What's inside
 
+- **Start here** — `start-here.html` (kit tour + 5 publish steps)
 - **Routes**: Home (`/`), `/projects`, `/projects/[slug]`, `/contact`
-- **Home**: Editorial hero + about + services + toolkit + experience + selected projects + reach CTA
+- **Home**: Editorial hero (projects + resume CTAs), about, how I contribute, toolkit, experience chart, selected projects slider, reach
+- **Projects page**: Poster grid wired to `data/projects.json`
+- **Case study pages**: Long-form detail with cover, sidebar, share, and next-project nav
+- **Contact page**: Split layout and a message form (UI-only until you wire a provider)
 - **Global chrome**: Navbar + footer from `config/site.ts`
 - **Content workflow**: Branding in `config/site.ts`, projects in `data/projects.json`
-- **Contact form**: UI-only until you wire a provider
 - **No backend, no database, no env vars required**
-
-This template includes a designed home (hero, about, services, toolkit, experience chart, selected projects slider, reach CTA), a projects archive, a case-study detail page, and a split contact page.
 
 ---
 
@@ -43,7 +44,7 @@ npm run start
 
 1. **Edit `config/site.ts`** — name, role, email, social links, nav
 2. **Edit `data/projects.json`** — add, edit, or hide projects (`status: "draft"`)
-3. **Add images under `public/`** when you have them
+3. **Swap images under `public/`** (covers, case-study heroes, about photo, `resume.pdf`)
 4. **Run `npm run dev`** to preview
 5. **`git commit` and `git push`** — your host redeploys
 
@@ -67,7 +68,7 @@ Full schema: top of `lib/projects-data.ts`.
 | ----------------------- | ---- |
 | Site name, role, email, social | `config/site.ts` |
 | Page title & meta description | `config/site.ts` (via layout) |
-| Hero headline, bio, CTA, stats | `config/site.ts` → `hero` |
+| Hero headline, bio, CTAs, stats | `config/site.ts` → `hero` |
 | About heading, paragraphs, photo | `config/site.ts` → `about` |
 | How I Contribute heading, cards | `config/site.ts` → `services` |
 | Toolkit heading, groups, tools | `config/site.ts` → `toolkit` |
@@ -91,14 +92,15 @@ See `CUSTOMIZATION.md` for details.
 
 ```
 focus-developer-set/
+├── start-here.html              # open first — kit tour
 ├── app/
 │   ├── globals.css
 │   ├── layout.tsx
 │   ├── page.tsx                 # home sections + featured projects
 │   ├── contact/page.tsx
 │   └── projects/
-│       ├── page.tsx             # list shell
-│       └── [slug]/page.tsx      # detail shell (SSG)
+│       ├── page.tsx             # projects archive
+│       └── [slug]/page.tsx      # case study (SSG)
 ├── components/
 │   ├── site-navbar.tsx
 │   ├── site-footer.tsx
