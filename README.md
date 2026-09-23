@@ -2,8 +2,6 @@
 
 A light, editorial developer portfolio template built with Next.js 14, TypeScript, Tailwind CSS, and shadcn/ui. Designed pages are included — edit content in config and JSON, then deploy.
 
-**New here?** Open [`start-here.html`](./start-here.html) in your browser first — a short tour of the set and the 5 publish steps.
-
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=flat-square&logo=tailwindcss)
@@ -12,7 +10,6 @@ A light, editorial developer portfolio template built with Next.js 14, TypeScrip
 
 ## What's inside
 
-- **Start here** — `start-here.html` (kit tour + 5 publish steps)
 - **Routes**: Home (`/`), `/projects`, `/projects/[slug]`, `/contact`
 - **Home**: Editorial hero (projects + resume CTAs), about, how I contribute, toolkit, experience chart, selected projects slider, reach
 - **Projects page**: Poster grid wired to `data/projects.json`
@@ -92,7 +89,6 @@ See `CUSTOMIZATION.md` for details.
 
 ```
 focus-developer-set/
-├── start-here.html              # open first — kit tour
 ├── app/
 │   ├── globals.css
 │   ├── layout.tsx

@@ -15,7 +15,6 @@ No environment variables are required for the default template.
 ## Setup (5 minutes)
 
 - [ ] **Extract the bundle** to your desired location
-- [ ] **Open `start-here.html`** in a browser (full kit tour)
 - [ ] **Open a terminal** in the project folder
 - [ ] **Install dependencies:**
   ```bash
