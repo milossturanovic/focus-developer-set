@@ -5,7 +5,7 @@ Copy the prompt below into ChatGPT, Claude, or Cursor after you unzip the templa
 ---
 
 ```text
-I purchased the Focus Developer Set (Next.js 14 portfolio template). Help me customize it for my job search. The home hero, about section, services section, toolkit grid, experience chart, selected projects slider, reach CTA, projects grid, project case-study page, and contact page are already designed — do not rebuild them unless I ask.
+I'm using the free Focus Developer Set (Next.js 14 portfolio template). Help me customize it for my job search. The home hero, about section, services section, toolkit grid, experience chart, selected projects slider, reach CTA, projects grid, project case-study page, and contact page are already designed — do not rebuild them unless I ask.
 
 Do not add a database, admin panel, or backend unless I ask.
 

@@ -292,4 +292,4 @@ Home already includes the editorial hero, about strip, services cards, toolkit g
 - One source of truth for identity (`config/site.ts`) and projects (`data/projects.json`)
 - Prefer small edits over rewrites
 - Run `npm run build` before you deploy (it fails if `projects.json` is missing or invalid)
-- Private Git repo + Vercel is the intended publish path (see `LICENSE.md` and `DEPLOYMENT.md`)
+- Push to GitHub (public or private) and deploy on Vercel (see `LICENSE.md` and `DEPLOYMENT.md`)

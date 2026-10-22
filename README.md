@@ -2,16 +2,20 @@
 
 A light, editorial developer portfolio template built with Next.js 14, TypeScript, Tailwind CSS, and shadcn/ui. Designed pages are included — edit content in config and JSON, then deploy.
 
+**Live demo:** [focus-developer-set.vercel.app](https://focus-developer-set.vercel.app/)
+
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=flat-square&logo=tailwindcss)
+
+![Focus Developer Set hero preview](images/focus-developer-set-hero.png)
 
 ---
 
 ## What's inside
 
 - **Routes**: Home (`/`), `/projects`, `/projects/[slug]`, `/contact`
-- **Home**: Editorial hero (projects + resume CTAs), about, how I contribute, toolkit, experience chart, selected projects slider, reach
+- **Home sections**: Editorial hero (projects + resume CTAs), about, how I contribute, toolkit, experience chart, selected projects slider, reach
 - **Projects page**: Poster grid wired to `data/projects.json`
 - **Case study pages**: Long-form detail with cover, sidebar, share, and next-project nav
 - **Contact page**: Split layout and a message form (UI-only until you wire a provider)
@@ -39,7 +43,7 @@ npm run start
 
 ## How to edit your portfolio
 
-1. **Edit `config/site.ts`** — name, role, email, social links, nav
+1. **Edit `config/site.ts`** — name, role, email, social links, nav, section copy
 2. **Edit `data/projects.json`** — add, edit, or hide projects (`status: "draft"`)
 3. **Swap images under `public/`** (covers, case-study heroes, about photo, `resume.pdf`)
 4. **Run `npm run dev`** to preview
@@ -77,6 +81,9 @@ Full schema: top of `lib/projects-data.ts`.
 | Reach heading, channels, CTAs | `config/site.ts` → `reach` |
 | Nav links | `config/site.ts` → `navItems` |
 | Projects (every page) | `data/projects.json` |
+| About photo | `public/about/` |
+| Project covers / screenshots | `public/` (paths in JSON) |
+| Resume download (`hero.secondaryCta`) | `public/resume.pdf` |
 | Contact form wiring | `components/contact-form.tsx` |
 | Theme colors | `app/globals.css` |
 | Home layout | `app/page.tsx` + `components/sections/` |
@@ -116,7 +123,9 @@ focus-developer-set/
 ├── config/site.ts
 ├── data/projects.json
 ├── lib/projects-data.ts
-└── public/                      # buyer assets (about photo, project covers)
+├── images/
+│   └── focus-developer-set-hero.png   # README showcase
+└── public/                      # site assets (about photo, project covers, resume)
 ```
 
 ---
@@ -129,10 +138,10 @@ focus-developer-set/
 | `CUSTOMIZATION.md` | File-by-file edit guide |
 | `DEPLOYMENT.md` | Vercel-first deploy guide |
 | `AI_CUSTOMIZATION_PROMPT.md` | Copy-paste AI prompt |
-| `LICENSE.md` | Terms + Git hosting exception |
+| `LICENSE.md` | MIT — free to use, share, and fork |
 
 ---
 
 ## License
 
-See `LICENSE.md`. You may deploy from a **private** Git repo. Do not publish the template source publicly or redistribute the zip.
+This project is free and open source under the [MIT License](LICENSE.md). Clone it, customize it, publish it publicly, and use it for personal or commercial work.
