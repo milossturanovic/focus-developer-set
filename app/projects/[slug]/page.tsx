@@ -25,7 +25,7 @@ import {
 } from "@/lib/projects-data"
 
 type ProjectPageProps = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
@@ -36,7 +36,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: ProjectPageProps): Promise<Metadata> {
-  const project = await getProjectCaseStudy(params.slug)
+  const { slug } = await params
+  const project = await getProjectCaseStudy(slug)
   if (!project) {
     return { title: "Project" }
   }
@@ -47,7 +48,8 @@ export async function generateMetadata({
 }
 
 export default async function ProjectDetailPage({ params }: ProjectPageProps) {
-  const project = await getProjectCaseStudy(params.slug)
+  const { slug } = await params
+  const project = await getProjectCaseStudy(slug)
   if (!project) notFound()
 
   return <ProjectCaseStudy project={project} />
